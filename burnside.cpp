@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// computes number of cube colorings with k colors
+
 int binpow(int a, int n){
 	int ans = 1;
 	while(n){
@@ -11,7 +13,7 @@ int binpow(int a, int n){
 	return ans;
 }
 
-const int k = 6, n = 6;
+const int k = 3, n = 6;
 
 vector<int> multiply(vector<int> a, vector<int> b){
 	vector<int> ans(n);

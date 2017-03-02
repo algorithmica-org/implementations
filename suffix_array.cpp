@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 vector<int> suffix_array(vector<int> s){
 	s.push_back(0);
 	int n = (int) s.size();
@@ -34,15 +31,4 @@ vector<int> suffix_array(vector<int> s){
 		cls = _cls;
 	}
 	return vector<int>(p.begin()+1, p.end());
-}
-
-int main(){
-	vector<int> s;
-
-	int t;
-	while(cin >> t) s.push_back(t);
-
-	vector<int> sa = suffix_array(s);
-	for(int x : sa)
-		cout << x << " ";
 }
