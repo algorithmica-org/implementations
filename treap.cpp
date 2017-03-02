@@ -1,7 +1,7 @@
 struct node{
-	int pos, size = 1;
-	node *l = NULL, *r = NULL;
-	node(int _pos){ pos = _pos; }
+	int key, size = 1;
+	node *l = 0, *r = 0;
+	node(int _key){ key = _key; }
 };
 
 int size(node *v) { return (v) ? v->size : 0; }
@@ -26,7 +26,7 @@ node* merge(node *l, node *r){
 typedef pair<node*, node*> Pair;
 
 Pair split(node *p, int x){
-	if(!p) return {NULL, NULL};
+	if(!p) return {0, 0};
 	if(size(p->l) + 1 <= x){
 		Pair q = split(p->r, x-size(p->l)-1);
 		p->r = q.first;
@@ -41,7 +41,7 @@ Pair split(node *p, int x){
 	}
 }
 
-node *root = NULL;
+node *root = 0;
 
 void insert(int x){
 	Pair q = split(root, x);
