@@ -4,7 +4,7 @@ vector<int> bfs(int s){
 	queue<int> q;
 	q.push(s);
 	while(q.size()){
-		int v = q.top();
+		int v = q.front();
 		q.pop();
 		for(int u : g[v])
 			if(d[u] == -1)
