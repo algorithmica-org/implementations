@@ -1,41 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
-vector< vector<int> > g;
-vector<int> s;
-int n;
 
-void sizes(int v){
-	for(size_t i = 0; i < g[v].size(); i++){
-		int u = g[v][i];
-		sizes(u);
-		s[v] += s[u];
-	}
+const int maxn = 1e5;
+vector<int> g[maxn];
+bool b[maxn];
+int s[maxn];
+
+void sizes(int v, int p){
+	s[v] = 1;
+	for(int u : g[v])
+		if(!b[u])
+			sizes(u, v), s[v] += s[u];
 }
 
-int centroid(int v){
+int centroid(int v, int p, int n){
 	for(size_t i = 0; i < g[v].size(); i++){
 		int u = g[v][i];
 		if(s[u] > n/2)
-			return centroid(u);
+			return centroid(u, v, n);
 	}
 	return v;
 }
 
-int main(){
-	
-	cin >> n;
+void solve(int v){
 
-	g.resize(n);
-	s.assign(n, 1);
+	/* ... */
 
-	for(int i = 1; i < n; i++){
-		int p;
-		cin >> p;
-		g[p].push_back(i);
+	b[v] = 1;
+	for(int u : g[v]){
+		if(!b[u]){
+			sizes(u, v);
+			solve(centroid(u, v, s[u]/2));
+		}
 	}
+}
 
-	sizes(0);
-	cout << centroid(0);
+int main(){
 
 	return 0;
 }

@@ -1,5 +1,3 @@
-const int mod = 1e9+7, maxn;
-
 int t[maxn];
 
 int binpow(int a, int n){
@@ -16,8 +14,12 @@ int inv(int x){
 	return binpow(x, mod-2);
 }
 
-int c_n_k(int n, int k){
+int c(int n, int k){
 	return t[n]*inv(t[k]) % mod * inv(t[n-k]) % mod;
+}
+
+int d(int n, int k){
+	return c_n_k(n+k-1, k-1);
 }
 
 t[0] = 1;

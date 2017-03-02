@@ -1,12 +1,8 @@
-const int inf = 1e9;
-
 vector<int> dijkstra(int root){
 	set< pair<int, int> > q;
 	q.insert({0, root});
-
 	vector<int> d(n, inf);
 	d[root] = 0;
-
 	while(!q.empty()){
 		int v = q.begin()->second;
 		q.erase(q.begin());
@@ -19,6 +15,5 @@ vector<int> dijkstra(int root){
 			}
 		}
 	}
-
 	return d;
 }
