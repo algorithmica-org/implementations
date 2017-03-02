@@ -12,9 +12,7 @@ for(int l = 1; l < logn; l++)
 		lg[i] = l;
 
 for(int i = n-1; i >= 0; i--){
-	mx[i][0] = mn[i][0] = a[i];
-	for(int l = 0; l < logn-1; l++){
+	mx[i][0] = a[i];
+	for(int l = 0; l < logn-1; l++)
 		mx[i][l+1] = max(mx[i][l], mx[i+(1<<l)][l]);
-		mn[i][l+1] = min(mn[i][l], mn[i+(1<<l)][l]);
-	}
 }
