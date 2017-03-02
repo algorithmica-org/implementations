@@ -1,35 +1,23 @@
-#include <bits/stdc++.h>
-using namespace std;
+const int maxn;
 
-int n;
-
-vector< vector<int> > g(n);
-vector<int> m(n, -1);
-vector<bool> used(n);
+vector<int> g[maxn];
+int mt[maxn];
+bool used[maxn];
 
 bool kuhn(int v){
-	if(used[v]) return false;
-	used[v] = true;
+	if(used[v]) return 0;
+	used[v] = 1;
 	for(int u : g[v]){
-		if(m[u] == -1 || kuhn(m[u])){
-			m[u] = v;
-			return true;
+		if(mt[u] == -1 || kuhn(mt[u])){
+			mt[u] = v;
+			return 1;
 		}
 	}
-	return false;
+	return 1;
 }
 
-
-int main(){
-
-	int cnt = 0;
-
-	for(int i = 0; i < n; i++){
-		used.assign(n, false);
-		if(kuhn(i)) cnt++;
-	}
-
-	cout << cnt;
-
-	return 0;
+memset(mt, -1, sizeof(mt));
+for(int i = 0; i < n; i++){
+	memset(used, 0, sizeof(mt));
+	if(kuhn(i)) cnt++;
 }

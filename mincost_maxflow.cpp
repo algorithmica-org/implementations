@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 const int maxn = 305, inf = 1e9;
 
 int cost[maxn][maxn], cap[maxn][maxn];
@@ -47,31 +44,4 @@ int mincost(int s, int t){
 		}
 	}
 	return ans;
-}
-
-int main(){
-	cin >> n;
-
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < n; j++){
-			int t;
-			cin >> t;
-			for(int k = 0; k < n; k++)
-				if(k != i)
-					cost[k][n+j] += t, cost[n+j][k] -= t;
-		}
-	}
-
-	for(int i = 0; i < n; i++)
-		for(int j = 0; j < n; j++)
-			cap[i][n+j] = 1;
-
-	for(int i = 0; i < n; i++)
-		cap[2*n][i] = cap[n+i][2*n+1] = 1;
-
-	n = 2*n+2;
-
-	cout << mincost(n-2, n-1);
-
-	return 0;
 }

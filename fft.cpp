@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 typedef complex<double> CC;
 double pi = acos(-1);
 
@@ -42,11 +39,4 @@ vector<double> multiply(vector<double> a, vector<double> b){
 	for(size_t i = 0; i < n; i++)
 		ans[i] = _a[i].real();
 	return ans;
-}
-
-int main(){
-	vector<double> a = {1, 1, 2, 3}, b = {8, 2, 2, 5};
-	vector<double> c = multiply(a, b);
-	for(double x : c)
-		cout << x << " ";
 }

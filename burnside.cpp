@@ -21,14 +21,14 @@ vector<int> multiply(vector<int> a, vector<int> b){
 }
 
 int cycles(vector<int> a){
-	vector<bool> used(n, false);
+	vector<bool> used(n, 0);
 	int ans = 0;
 	for(int i = 0; i < n; i++){
 		if(!used[i]){
 			ans++;
 			int p = i;
 			while(!used[p]){
-				used[p] = true;
+				used[p] = 1;
 				p = a[p];
 			}
 		}

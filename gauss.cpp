@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 typedef vector< vector<double> > matrix;
 
 vector<double> gauss(matrix a){
@@ -22,19 +19,4 @@ vector<double> gauss(matrix a){
 	for(int i = 0; i < n; i++)
 		ans[i] = a[i][n] / a[i][i];
 	return ans;
-}
-
-int main(){
-
-	int n;
-	cin >> n;
-	matrix a(n, vector<double> (n+1));
-	for(int i = 0; i < n; i++)
-		for(int j = 0; j <= n; j++)
-			cin >> a[i][j];
-	vector<double> ans = gauss(a);
-	for(int i = 0; i < n; i++)
-		cout << ans[i] << " ";
-
-	return 0;
 }

@@ -1,33 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int k = 26;
+const int k = 26;
 
 struct vertex{
-	vertex *to[26] = {NULL};
-	vertex *link = NULL;
+	vertex *to[k] = {0};
+	vertex *link = 0;
 	int len = 0;
-	bool used = false;
 };
 
-int ans = 0;
+vertex *root = new vertex, *cur = root;
 
-void dfs(vertex *v){
-	if(!v || v->used) return;
-	v->used = true;
-	if(v->link) ans += v->len - v->link->len;
-	for(int i = 0; i < k; i++)
-		dfs(v->to[i]);
-}
-
-int main(){
-	ios::sync_with_stdio(false);
-
-	string s;
-	cin >> s;
-
-	vertex *root = new vertex, *cur = root;
-
+void build(string s){
 	for(char _c : s){
 		int c = (int) (_c-'a');
 		vertex *v = cur;
@@ -40,8 +24,7 @@ int main(){
 		else{
 			vertex *u = v->to[c];
 			vertex *clone = new vertex;
-			for(int i = 0; i < k; i++)
-				clone->to[i] = u->to[i];
+			memcpy(clone->to, u->to, sizeof(u->to));
 			clone->link = u->link;
 			clone->len = v->len+1;
 			while(v && v->to[c] == u)
@@ -49,9 +32,4 @@ int main(){
 			cur->link = u->link = clone;
 		}
 	}
-
-	dfs(root);
-	cout << ans;
-
-	return 0;
 }
