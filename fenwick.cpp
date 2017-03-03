@@ -1,9 +1,9 @@
 struct fenwick{
 	int n;
-	int *t;
+	vector<int> t;
 	fenwick(int _n){
 		n = _n;
-		t = new int[n];
+		t.assign(n, 0);
 	}
 	int sum(int r){
 		int ans = 0;
