@@ -11,6 +11,7 @@ for i in range(100):
     f = open('test.txt', 'w')
     test = gen()
     f.write(test)
+    f.close()
     v1 = popen('./stupid < test.txt').read()
     v2 = popen('./run < test.txt').read()
     if v1 != v2:
