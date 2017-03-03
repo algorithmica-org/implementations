@@ -4,7 +4,6 @@ int gcd(int a, int b, int &x, int &y){
 		return b;
 	}
 	int _x, _y, d = gcd(b%a, a, _x, _y);
-	x = _y-(b/a)*_x;
-	y = _x;
+	x = _y-(b/a)*_x, y = _y;
 	return d;
 }
