@@ -16,15 +16,16 @@ void add_edge(int u, int v, int w){
 }
 
 int dfs(int v, int t, int flow){
-	if(used[v]) return 0;
 	if(v == t) return flow;
 	used[v] = 1;
 	for(int _e : g[v]){
 		int u = e[_e].to, w = e[_e].cap;
-		if(int d = dfs(u, t, min(flow, w))){
-			e[_e].cap -= d;
-			e[_e^1].cap += d;
-			return d;
+		if(!used[u] && w > 0){
+			if(int d = dfs(u, t, min(flow, w))){
+				e[_e].cap -= d;
+				e[_e^1].cap += d;
+				return d;
+			}
 		}
 	}
 	return 0;
