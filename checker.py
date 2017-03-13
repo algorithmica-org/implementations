@@ -1,5 +1,5 @@
 from os import popen
-from random import randint, uniform
+from random import randint, choice, uniform
 
 def gen():
     n = randint(3, 5)
