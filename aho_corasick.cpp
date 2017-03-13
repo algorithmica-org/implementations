@@ -27,7 +27,7 @@ vertex* go(vertex *v, int c){
 		else if(v == root) v->go[c] = root;
 		else v->go[c] = go(link(v), c);
 	}
-	return v->to[c];
+	return v->go[c];
 }
 
 void add_string(string s){
