@@ -1,4 +1,4 @@
-struct segtree{
+struct segtree {
     int lb, rb;
     int sum = 0;
     segtree *l = 0, *r = 0;
@@ -21,7 +21,7 @@ struct segtree{
             else r->add(k, x);
         }
     }
-    int get_sum(int lq, int rq){
+    int get_sum (int lq, int rq) {
         if (lb >= lq && rb <= rq) return sum;
         if (lb > rq || rb < lq) return 0;
         extend();
