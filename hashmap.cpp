@@ -5,17 +5,15 @@ struct hashmap {
     inline int h (int x) { return (x^179)*7; }
 
     void add (int x, int y) {
-        int t = h(x);
-        int k = t % size;
-        while (a[k] != -1 && a[k] != t)
+        int k = h(x) % size;
+        while (a[k] != -1 && a[k] != x)
             k = (k+1) % size;
         a[k] = t, b[k] = y; 
     }
 
-    int get (int x, int y) {
-        int t = h(x);
-        for (int k = t % size; a[k] != -1; k = (k+1) % size) {
-            if (a[k] == t)
+    int get (int x) {
+        for (int k = h(x) % size; a[k] != -1; k = (k+1) % size) {
+            if (a[k] == x)
                 return b[k];
         return -1;
     }
