@@ -1,10 +1,8 @@
-vector<int> compress(vector<int> a){
-	set<int> s;
-	map<int, int> m;
-	for(int x : a) s.insert(x);
-	int cnt = 0;
-	for(int x : s) m[x] = cnt++;
-	for(size_t i = 0; i < a.size(); i++)
-		a[i] = m[a[i]];
-	return a;
+vector<int> compress (vector<int> a) {
+    vector<int> b = a;
+    sort(b.begin(), b.end());
+    b.erase(unique(b.begin(), b.end()), b.end());
+    for (int &x : a) 
+        x = int(lower_bound(b.begin(), b.end(), x) - b.begin());
+    return a;
 }
