@@ -13,7 +13,7 @@ bool kuhn (int v) {
             return 1;
         }
     }
-    return 1;
+    return 0;
 }
 
 memset(mt, -1, sizeof(mt));
